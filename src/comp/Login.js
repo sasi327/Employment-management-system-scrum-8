@@ -1,7 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import ContextData from './Context';
 // import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 function Login(props) {
+    const dataReceived=useContext(ContextData)
     const [userDetails, setuserDetails] = useState({ email: '', password: '' });
     const [isEmail, setEmail] = useState(true)
     const [EmailError, setEmailError] = useState('')
@@ -28,6 +30,7 @@ function Login(props) {
         console.log(validEmail);
         console.log(validPassword);
         if (validEmail && validPassword) {
+            dataReceived.setShowLogin(false)
             props.history.push('/tabledata')
         }else{
             console.log('error');
@@ -72,7 +75,7 @@ function Login(props) {
     }
     //for submitting the forgot Password And creatte an account to push the pages
     const handleSubmit1=()=>{
-        props.history.push('/register')
+        props.history.push('/registration')
     }
     //
     const handleSubmit2=()=>{
@@ -81,8 +84,6 @@ function Login(props) {
 
     return (
         <>
-            
-
                 <div className='container'>
                     <div className='row'>
                         <h3 className='text-white mt-3 text-center'> Sign in to your account</h3> 
@@ -103,7 +104,6 @@ function Login(props) {
                                             </div>
                                             <div>
                                                 <span onClick={handleSubmit2} className="text-primary"><u>Forgot password?</u></span>
-
                                             </div>
                                         </div>
                                         <input type='password' name='password' placeholder='Enter Your Password...' value={userDetails.password} onChange={(event) => { updateUserDetails(event) }} className='form-control mt-2' />
@@ -123,12 +123,7 @@ function Login(props) {
                             </div>
                         </div>
                     </div>
-
-                   
                 </div>
-
-
-            
         </>
     )
 }

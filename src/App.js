@@ -15,19 +15,16 @@ function App() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-            <a className="nav-item nav-link" ><Link to="/register" className='text-white text-decoration-none'> Register</Link></a>
+           
               <a className="nav-item nav-link "><Link to="/login" className='text-white text-decoration-none'> Login</Link></a>
-              <a className="nav-item nav-link" ><Link to="/adddetails" className='text-white text-decoration-none'> AddEmployee</Link></a>
-              <a className="nav-item nav-link"><Link to="/tabledata" className='text-white text-decoration-none'> Employee Data</Link></a>
+              
             
             </div>
           </div>
         </nav>
 
         <Route path="/register" component={Login} />
-        <Route path="/login" component={Login} />
-        <Route path="/adddetails" component={Login} />
-        <Route path='/tabledata' component={TableData} />
+       
       </div>
     </Router>
   );
